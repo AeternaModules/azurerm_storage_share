@@ -22,7 +22,7 @@ EOT
     name                 = string
     quota                = number
     access_tier          = optional(string)
-    enabled_protocol     = optional(string, "SMB")
+    enabled_protocol     = optional(string) # Default: "SMB"
     metadata             = optional(map(string))
     storage_account_id   = optional(string)
     storage_account_name = optional(string)
