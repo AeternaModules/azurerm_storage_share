@@ -22,7 +22,7 @@ EOT
     name                 = string
     quota                = number
     access_tier          = optional(string)
-    enabled_protocol     = optional(string) # Default: "SMB"
+    enabled_protocol     = optional(string)
     metadata             = optional(map(string))
     storage_account_id   = optional(string)
     storage_account_name = optional(string)
@@ -54,6 +54,10 @@ EOT
   # path: quota
   #   condition: value >= 1 && value <= 102400
   #   message:   must be between 1 and 102400
+  # path: metadata
+  #   source:    [from validate.MetaDataKeys] isCSharpKeyword
+  # path: metadata
+  #   source:    [from validate.MetaDataKeys] !regexp.MustCompile(`^([a-z_]{1}[a-z0-9_]{1,})$`).MatchString(k)
   # path: enabled_protocol
   #   source:    validation.StringInSlice value list is not a literal []string - likely a generated PossibleValuesFor*() helper; resolve separately
   # path: acl.id
