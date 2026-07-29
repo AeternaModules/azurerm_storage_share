@@ -4,12 +4,11 @@ Map of storage_shares, attributes below
 Required:
     - name
     - quota
+    - storage_account_id
 Optional:
     - access_tier
     - enabled_protocol
     - metadata
-    - storage_account_id
-    - storage_account_name
     - acl (block):
         - access_policy (optional, block):
             - expiry (optional)
@@ -19,13 +18,12 @@ Optional:
 EOT
 
   type = map(object({
-    name                 = string
-    quota                = number
-    access_tier          = optional(string)
-    enabled_protocol     = optional(string)
-    metadata             = optional(map(string))
-    storage_account_id   = optional(string)
-    storage_account_name = optional(string)
+    name               = string
+    quota              = number
+    storage_account_id = string
+    access_tier        = optional(string)
+    enabled_protocol   = optional(string)
+    metadata           = optional(map(string))
     acl = optional(list(object({
       access_policy = optional(list(object({
         expiry      = optional(string)

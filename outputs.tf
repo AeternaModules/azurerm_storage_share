@@ -30,17 +30,9 @@ output "storage_shares_rbac_scope_id" {
   description = "Map of rbac_scope_id values across all storage_shares, keyed the same as var.storage_shares"
   value       = { for k, v in azurerm_storage_share.storage_shares : k => v.rbac_scope_id if v.rbac_scope_id != null && length(v.rbac_scope_id) > 0 }
 }
-output "storage_shares_resource_manager_id" {
-  description = "Map of resource_manager_id values across all storage_shares, keyed the same as var.storage_shares"
-  value       = { for k, v in azurerm_storage_share.storage_shares : k => v.resource_manager_id if v.resource_manager_id != null && length(v.resource_manager_id) > 0 }
-}
 output "storage_shares_storage_account_id" {
   description = "Map of storage_account_id values across all storage_shares, keyed the same as var.storage_shares"
   value       = { for k, v in azurerm_storage_share.storage_shares : k => v.storage_account_id if v.storage_account_id != null && length(v.storage_account_id) > 0 }
-}
-output "storage_shares_storage_account_name" {
-  description = "Map of storage_account_name values across all storage_shares, keyed the same as var.storage_shares"
-  value       = { for k, v in azurerm_storage_share.storage_shares : k => v.storage_account_name if v.storage_account_name != null && length(v.storage_account_name) > 0 }
 }
 output "storage_shares_url" {
   description = "Map of url values across all storage_shares, keyed the same as var.storage_shares"

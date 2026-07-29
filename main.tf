@@ -1,13 +1,12 @@
 resource "azurerm_storage_share" "storage_shares" {
   for_each = var.storage_shares
 
-  name                 = each.value.name
-  quota                = each.value.quota
-  access_tier          = each.value.access_tier
-  enabled_protocol     = each.value.enabled_protocol
-  metadata             = each.value.metadata
-  storage_account_id   = each.value.storage_account_id
-  storage_account_name = each.value.storage_account_name
+  name               = each.value.name
+  quota              = each.value.quota
+  storage_account_id = each.value.storage_account_id
+  access_tier        = each.value.access_tier
+  enabled_protocol   = each.value.enabled_protocol
+  metadata           = each.value.metadata
 
   dynamic "acl" {
     for_each = each.value.acl != null ? each.value.acl : []
